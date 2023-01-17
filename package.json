@@ -4,8 +4,9 @@
   "scripts": {
     "build": "concurrently \"npm run dev:sass\" \"remix dev\"",
     "build:css": "node-sass ./styles -o ./app/styles --output-style compressed",
-    "start": "concurrently \"npm run dev:sass\" \"remix dev\"",
-    "start:sass": "npm run build:css && node-sass -rw ./styles -o ./app/styles"
+    "start": "concurrently \"npm run start:sass\" \"npm run generate:css\" \"remix dev\"",
+    "start:sass": "npm run build:css && node-sass -rw ./styles -o ./app/styles",
+    "generate:css": "npx tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.scss"
   },
   "dependencies": {
     "@remix-run/node": "^1.10.1",
@@ -23,6 +24,8 @@
     "@types/react-dom": "^18.0.8",
     "concurrently": "^7.6.0",
     "eslint": "^8.27.0",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   },
   "engines": {

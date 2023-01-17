@@ -51,3 +51,6 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
+
+### EXAMPLE
+https://github.com/remix-run/examples

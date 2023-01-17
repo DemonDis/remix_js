@@ -7,7 +7,7 @@ export function links() {
 export default function Index() {
   return (
     <div className="wrapper">
-      <h1>Welcome to Remix</h1>
+      <h1 className="text-6xl font-bold text-red-700">Welcome to Remix</h1>
     </div>
   );
 }
