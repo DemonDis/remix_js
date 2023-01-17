@@ -9,9 +9,11 @@ import {
 } from "@remix-run/react";
 
 import tailwind from "./tailwind.css";
+import bootstrapCSS from "bootstrap/dist/css/bootstrap.min.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
+  { rel: "stylesheet", href: bootstrapCSS },
 ];
 
 export const meta: MetaFunction = () => ({
