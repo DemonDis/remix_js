@@ -2,13 +2,15 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "concurrently \"npm run dev:sass\" \"remix dev\"",
-    "dev": "concurrently \"npm run tailwind\" \"npm run dev:postcss\" \"npm run dev:sass\" \"remix dev\"",
-    "build:css": "sass ./styles -o ./app/styles --output-style compressed",
+    "build": "concurrently \"npm run build:css\" \"remix build\"",
+    "dev": "concurrently \"npm run tailwind\" \"npm run dev:sass\" \"remix dev\"",
+    "build:sass": "sass ./styles -o ./app/styles --output-style compressed",
+    "build:css": "sass app/:app/ --style=compressed --no-source-map",
     "dev:sass": "sass styles/:app/styles/ --watch ",
     "tailwind": "npx tailwindcss -i ./styles/tailwind.scss -o ./app/tailwind.css",
     "dev:postcss": "postcss styles --base styles --dir app/styles -w",
-    "build:postcss": "postcss styles --base styles --dir app/styles --env production"
+    "build:postcss": "postcss styles --base styles --dir app/styles --env production",
+    "clean": "concurrently \"rm -r app/styles/*\" \"rm -r build\" \"rm -r .cache\" \"rm -r public/build\""
 
   },
   "dependencies": {

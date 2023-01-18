@@ -1,12 +1,10 @@
-import { Links } from "@remix-run/react";
-
 import styles from "~/styles/login.css";
-import stylesapp from "~/styles/app.css";
+// import stylesapp from "~/styles/app.css";
 
 export function links() {
   return [
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: stylesapp },
+    // { rel: "stylesheet", href: stylesapp },
   ];
 }
 
