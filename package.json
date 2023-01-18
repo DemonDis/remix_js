@@ -3,10 +3,13 @@
   "sideEffects": false,
   "scripts": {
     "build": "concurrently \"npm run dev:sass\" \"remix dev\"",
-    "start": "concurrently \"npm run start:sass\" \"npm run generate:css\" \"remix dev\"",
+    "dev": "concurrently \"npm run tailwind\" \"npm run dev:postcss\" \"npm run dev:sass\" \"remix dev\"",
     "build:css": "sass ./styles -o ./app/styles --output-style compressed",
-    "start:sass": "sass styles/:app/styles/ --watch ",
-    "generate:css": "npx tailwindcss -i ./styles/tailwind.scss -o ./app/tailwind.css"
+    "dev:sass": "sass styles/:app/styles/ --watch ",
+    "tailwind": "npx tailwindcss -i ./styles/tailwind.scss -o ./app/tailwind.css",
+    "dev:postcss": "postcss styles --base styles --dir app/styles -w",
+    "build:postcss": "postcss styles --base styles --dir app/styles --env production"
+
   },
   "dependencies": {
     "@remix-run/node": "^1.10.1",
@@ -23,9 +26,12 @@
     "@remix-run/eslint-config": "^1.10.1",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "autoprefixer": "^10.4.13",
     "concurrently": "^7.6.0",
     "eslint": "^8.27.0",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   },
